@@ -24,7 +24,7 @@ class RentedSearch():
         print("Fetching and parsing latest properties on Zoopla...")
         search.data = [RentedAccomodation.from_zoopla(id) for id in search.ids]
         print("Done with Zoopla!")
-	return search
+	    return search
 
     @classmethod
     def from_rightmove(cls, link):
