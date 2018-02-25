@@ -1,0 +1,14 @@
+{
+    "search": {
+        "zoopla": "https://www.zoopla.co.uk/to-rent/property/edinburgh-city-centre/?beds_min=2&price_frequency=per_month&price_max=1000&q=Edinburgh%20City%20Centre%2C%20Edinburgh&results_sort=newest_listings&search_source=home",
+        "rightmove": "http://www.rightmove.co.uk/property-to-rent/find.html?minBedrooms=2&sortType=6&viewType=LIST&channel=RENT&index=0&maxPrice=1000&radius=0.0&numberOfPropertiesPerPage=499&locationIdentifier=USERDEFINEDAREA%5E%7B%22polylines%22%3A%22kcmtIfpjRhZ%7ELzXnmBxFlqCmb%40hw%40qgAs%5Euu%40qaA_N_uB%7ESmq%40d%5Ds%7B%40n%60A%3F%22%7D",
+        "gumtree": "https://www.gumtree.com/search?search_category=property-to-rent&search_location=edinburgh&q=&min_price=&max_price=400&min_property_number_beds=2&max_property_number_beds="
+    },
+    "mongo": {
+        "user": "",
+        "pword": "",
+        "address": "",
+        "database": "",
+        "collection": ""
+    }
+}
