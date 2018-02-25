@@ -24,7 +24,7 @@ class RentedAccomodation():
         accom.href = "http://www.rightmove.co.uk/property-to-rent/property-" + accom.id + ".html"
         accom.soup = BeautifulSoup(requests.get(accom.href).content, "html.parser")
         print("Parsing property...")
-	accom.title = accom.soup.find("h1", {"itemprop": "name"}).getText()
+        accom.title = accom.soup.find("h1", {"itemprop": "name"}).getText()
 
         accom.description = re.sub("\s", " ", accom.soup.find("p", {"itemprop":"description"}).getText())
         accom.description = re.sub(" +", " ", accom.description)[1:]

@@ -20,11 +20,10 @@ class RentedSearch():
                 search.ids.append(id["data-listing-id"])
             except:
                 pass
-
         print("Fetching and parsing latest properties on Zoopla...")
         search.data = [RentedAccomodation.from_zoopla(id) for id in search.ids]
         print("Done with Zoopla!")
-	    return search
+        return search
 
     @classmethod
     def from_rightmove(cls, link):
@@ -36,7 +35,7 @@ class RentedSearch():
         print("Fetching and parsing latest properties on rightmove...")
         search.data = [RentedAccomodation.from_rightmove(id) for id in search.ids]
         print("Done with rightmove!")
-	return search
+        return search
 
     @classmethod
     def from_gumtree(cls, link):
