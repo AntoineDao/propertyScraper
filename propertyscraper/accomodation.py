@@ -20,9 +20,11 @@ class RentedAccomodation():
     @classmethod    
     def from_rightmove(cls, id):
         accom = cls(id = id)
+	print("Fetchin property {} from Rightmove...".format(id))
         accom.href = "http://www.rightmove.co.uk/property-to-rent/property-" + accom.id + ".html"
         accom.soup = BeautifulSoup(requests.get(accom.href).content, "html.parser")
-        accom.title = accom.soup.find("h1", {"itemprop": "name"}).getText()
+        print("Parsing property...")
+	accom.title = accom.soup.find("h1", {"itemprop": "name"}).getText()
         
         accom.description = re.sub("\s", " ", accom.soup.find("p", {"itemprop":"description"}).getText())
         accom.description = re.sub(" +", " ", accom.description)[1:]
@@ -35,14 +37,17 @@ class RentedAccomodation():
         
         accom.key_info = KeyInfo.from_rightmove(accom.soup)
         accom.source = "rightmove"
+	print("Done!")
         return accom
     
     @classmethod
     def from_zoopla(cls, id):
+	print("Fetching property {} from Zoopla...".format(id))
         accom = cls(id = id)
         accom.href = "https://www.zoopla.co.uk/to-rent/details/" + accom.id
         accom.soup = BeautifulSoup(requests.get(accom.href).content, "html.parser")
-        accom.title = accom.soup.find("h2", {"class": "listing-details-h1"}).getText()
+        print("Parsing property...")
+	accom.title = accom.soup.find("h2", {"class": "listing-details-h1"}).getText()
         try:
             accom.description = re.sub("\s", " ", accom.soup.find("div", {"itemprop": "description"}).getText())
         except:
@@ -54,17 +59,21 @@ class RentedAccomodation():
         accom.address = Address.from_zoopla(accom.soup)
         accom.key_info = KeyInfo.from_zoopla(accom.soup)
         accom.source = "zoopla"
+	print("Done!")
         return accom
     
     @classmethod
     def from_gumtree(cls, href):
         accom = cls(href = href)
+	print("Fetching property from Gumtree...")
         accom.soup = BeautifulSoup(requests.get(accom.href).content, "html.parser")
-        accom.title = accom.soup.find("h1", {"id": "ad-title"}).getText()
+        print("Parsing property...")
+	accom.title = accom.soup.find("h1", {"id": "ad-title"}).getText()
         accom.description = re.sub("\s", " ", accom.soup.find("p", {"class": "ad-description"}).getText())
         accom.address = Address.from_gumtree(accom.soup)
         accom.key_info = KeyInfo.from_gumtree(accom.soup)
         accom.source = "gumtree"
+	print("Done!")
         return accom
         
     def to_json(self):
